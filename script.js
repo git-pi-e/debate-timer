@@ -1,29 +1,38 @@
 let minute = 0;
 let seconds = 0;
+
 let time_start = false;
+
+let interval_id = null;
 
 const display = document.getElementById('display');
 var start = document.getElementById('start');
 var reset = document.getElementById('reset');
 
 start.onclick = function() {
-    if(time_start === false) {
-        time_start = true;
-        stopwatch();
-        switchStart();
-    } else {
-        time_start = false;
-        switchStart();
-    }
+    startStop();
 };
 
 reset.onclick = function() {
     resetStopwatch();
 }
 
+function startStop() {
+    if(time_start === false) {
+        time_start = true;
+        interval_id = setInterval(stopwatch, 1000);
+        switchStart();
+    } else {
+        time_start = false;
+        clearInterval(interval_id);
+        switchStart();
+    }
+}
+
 
 function stopwatch() {
     if(time_start) {
+        
         seconds++;
 
         if(seconds === 60) {
@@ -35,9 +44,7 @@ function stopwatch() {
     	   time_start = false;
         }
 
-        displayTime();
-
-    	setTimeout(stopwatch, 1000);
+        displayTime();        
     }
 }
 
@@ -52,6 +59,9 @@ function switchStart() {
 function resetStopwatch() {
     time_start = false;
     switchStart();
+    if(!(interval_id === null)) {
+        clearInterval(interval_id);
+    }
     minute = 0;
     seconds = 0;
     displayTime();
