@@ -48,6 +48,7 @@ function stopwatch() {
         }
 
         displayTime();
+        changeBackground();
     }
 }
 
@@ -69,6 +70,7 @@ function resetStopwatch() {
     seconds = 0;
     mseconds = 0;
     displayTime();
+    changeBackground();
 }
 
 function displayTime() {
@@ -76,4 +78,18 @@ function displayTime() {
     let s = seconds.toString().padStart(2, '0');
     let ms = mseconds.toString().padStart(2, '0');
     display.innerHTML = `${m}:${s}:${ms}`;
+}
+
+function changeBackground() {
+    if(minute === 0 && seconds === 0 && mseconds === 0) {
+        document.body.style.backgroundColor = "white";
+    } else if(minute === 0 && seconds === 0 && mseconds > 0) {
+        document.body.style.backgroundColor = "yellow";
+    } else if(minute === 1 && seconds === 0 && mseconds === 1) {
+        document.body.style.backgroundColor = "green";
+    } else if(minute === 6 && seconds === 0 && mseconds === 1) {
+        document.body.style.backgroundColor = "yellow";
+    } else if(minute == 7 && seconds == 16 && mseconds == 0) {
+        document.body.style.backgroundColor = "red";
+    }
 }
