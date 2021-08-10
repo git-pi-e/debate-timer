@@ -6,7 +6,8 @@ let time_start = false;
 
 let interval_id = null;
 
-const display = document.getElementById('display');
+var display = document.getElementById('display');
+var display_ms = document.getElementById('display_ms');
 var start = document.getElementById('start');
 var reset = document.getElementById('reset');
 
@@ -77,7 +78,8 @@ function displayTime() {
     let m = minute.toString().padStart(2, '0');
     let s = seconds.toString().padStart(2, '0');
     let ms = mseconds.toString().padStart(2, '0');
-    display.innerHTML = `${m}:${s}:${ms}`;
+    display.innerHTML = `${m}:${s}`;
+    display_ms.innerHTML = `:${ms}`;
 }
 
 function changeBackground() {
