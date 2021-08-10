@@ -3,21 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <title>Debate Timer</title>
-    <link rel="stylesheet" href="https://wags-1314.github.io/debate-timer/resources/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     </style>
   </head>
   <body>
-    <div class="center">
-      <div>
-        <div id="display" class="timer">00:00:00</div>
+    <div class="row">
+      <div class="col-0 col-md-3"></div>
+      <div class="col-12 col-md-6" id="midcol1">
+        <div>
+          <div id="display" class="timer">00:00:00</div>
+        </div>
       </div>
-      <div>
-  	   <button id="start">Start</button>
-       <button id="reset">Reset</button>
-      </div>
+      <div class="col-0 col-md-3"></div>
     </div>
-    <script type="text/javascript" src="https://wags-1314.github.io/debate-timer/resources/js/script.js"></script>
-  </body>
+
+    <div class="row">
+      <div class="col-0 col-md-3"></div>
+      <div class="col-12 col-md-6" id="midcol2">
+        <div>
+          <button id="start" class="btn btn-info btn-lg" role="button" aria-pressed="true">Start</button>
+          <button id="reset" class="btn btn-light btn-lg">Reset</button>
+        </div>
+      </div>
+      <div class="col-0 col-md-3"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
 </html>

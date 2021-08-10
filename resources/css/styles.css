@@ -1,11 +1,29 @@
-.center {
+/*.center {
  	position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+}*/
 
 .timer {
 	font-family: 'Roboto', sans-serif;
-	font-size: 700%;
+	font-size: 10vw;
+}
+
+#start{
+    width: 180px;
+}
+
+#reset{
+    width: 180px;
+}
+#midcol1{
+    display: flex;
+    margin-top: 13%;
+    justify-content: center;
+}
+
+#midcol2{
+    display: flex;
+    justify-content: center;
 }
