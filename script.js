@@ -1,5 +1,6 @@
 let minute = 0;
 let seconds = 0;
+let mseconds = 0;
 
 let time_start = false;
 
@@ -20,7 +21,7 @@ reset.onclick = function() {
 function startStop() {
     if(time_start === false) {
         time_start = true;
-        interval_id = setInterval(stopwatch, 1000);
+        interval_id = setInterval(stopwatch, 10);
         switchStart();
     } else {
         time_start = false;
@@ -32,19 +33,21 @@ function startStop() {
 
 function stopwatch() {
     if(time_start) {
-        
-        seconds++;
-
+        mseconds++;
+        if(mseconds === 100) {
+            mseconds = 0;
+            seconds++;
+        }
         if(seconds === 60) {
-    	   minute++;
-    	   seconds = 0;
+            minute++;
+            seconds = 0;
         }
 
         if(minute === 60) {
-    	   time_start = false;
+            time_start = false;
         }
 
-        displayTime();        
+        displayTime();
     }
 }
 
@@ -70,5 +73,6 @@ function resetStopwatch() {
 function displayTime() {
     let m = minute.toString().padStart(2, '0');
     let s = seconds.toString().padStart(2, '0');
-    display.innerHTML = `${m}:${s}`;
+    let ms = mseconds.toString().padStart(2, '0');
+    display.innerHTML = `${m}:${s}:${ms}`;
 }
