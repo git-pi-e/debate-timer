@@ -67,6 +67,7 @@ function resetStopwatch() {
     }
     minute = 0;
     seconds = 0;
+    mseconds = 0;
     displayTime();
 }
 
