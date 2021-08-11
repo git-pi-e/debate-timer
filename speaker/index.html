@@ -9,15 +9,26 @@
     </style>
   </head>
   <body>
-    <div class="center">
-      <div>
-        <span id="display" class="timer">00:00</span>
-        <span id="display_ms" class="timer_ms">:00</span>
+    <div>
+      <div class="center">
+        <div id="currentAlert"></div>
+        <div>
+          <span id="display" class="timer">00:00</span>
+          <span id="display_ms" class="timer_ms">:00</span>
+        </div>
+        <div>
+    	   <button id="start">Start</button>
+         <button id="reset">Reset</button>
+         <button id="mute">Mute Bell</button>
+        </div>
       </div>
       <div>
-  	   <button id="start">Start</button>
-       <button id="reset">Reset</button>
-       <button id="mute">Mute Bell</button>
+        <input type="text" id="ipMinute"/>
+        <input type="text" id="ipSecond"/>
+        <input type="text" id="ipAlert"/>
+        <button id="alert">Add Flag</button>
+      </div>
+      <div id="displayAlert">
       </div>
     </div>
     <script type="text/javascript" src="./../resources/js/timer.js"></script>

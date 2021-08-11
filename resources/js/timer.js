@@ -3,6 +3,17 @@ var msDisplay = document.getElementById('display_ms')
 var startButton = document.getElementById('start')
 var resetButton = document.getElementById('reset')
 var muteToggleButton = document.getElementById('mute')
+var alertButton = document.getElementById('alert')
+
+var minuteInput = document.getElementById("ipMinute")
+var secondInput = document.getElementById("ipSecond")
+var alertInput = document.getElementById("ipAlert")
+var displayAlert = document.getElementById("displayAlert")
+var currentAlert = document.getElementById("currentAlert")
+
+var alerts = {}
+var printed = {}
+
 let isMute = false
 var stopwatch = {
 	elapsedTime: 0
@@ -37,6 +48,12 @@ resetButton.onclick = function() {
 	if(!(startButton.innerHTML === "Start")) {
 		startButton.innerHTML = "Start"
 	}
+
+	displayAlert.innerHTML = ""
+	currentAlert.innerHTML = ""
+
+	alerts = {}
+	printed = {}
 }
 
 muteToggleButton.onclick = function() {
@@ -47,6 +64,20 @@ muteToggleButton.onclick = function() {
 		muteToggleButton.innerHTML = "Mute Bell"
 		isMute = false
 	}
+}
+
+alertButton.onclick = function() {
+	let minute = parseInt(minuteInput.value)
+	let second = parseInt(secondInput.value)
+	let alert = alertInput.value
+	let prev = displayAlert.innerHTML
+	let minuteString = minute >= 10 ? minute.toString() : `0${minute}`
+	let secondString = second >= 10 ? second.toString() : `0${second}`
+	displayAlert.innerHTML = prev.concat(`<br/>${minuteString}:${secondString} - ${alert}`)
+
+	alerts[`${minute}:${second}`] = alert
+	printed[`${minute}:${second}`] = false
+	console.log(alerts)
 }
 
 function start() {
@@ -61,6 +92,25 @@ function delta() {
 	let minutes = parseInt((elapsedTime / (1000 * 60)) % 60)
 	displayTime(milliseconds, seconds, minutes)
 	changeBackground(milliseconds, seconds, minutes)
+	displayCurrentAlert(minutes, seconds)
+}
+
+function displayCurrentAlert(minute, second) {
+	let key = `${minute}:${second}`
+	//console.log(key + (key in alerts))
+	if(key in printed && !printed[key]){
+		console.log("in here")
+		let alert = alerts[key]
+		let cAlert = `<div id="${key}" class="alert">${key} - ${alert}</div>` 
+		currentAlert.innerHTML = currentAlert.innerHTML.concat(cAlert)
+		printed[key] = true
+		let func = () => {
+			console.log(key)
+			document.getElementById(key).remove()
+			
+		}
+		setTimeout(func, 10000)
+	}
 }
 
 function displayTime(ms, s, m) {

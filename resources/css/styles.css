@@ -1,16 +1,26 @@
+html *{
+	font-family: 'Roboto', sans-serif;
+}
+
 .center {
- 	position: absolute;
+ 	position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .timer {
-	font-family: 'Roboto', sans-serif;
+	
 	font-size: 10vw;
 }
 
 .timer_ms {
 	font-family: 'Roboto', sans-serif;
 	font-size: 5vw;
+}
+
+.alert {
+	font-size: 4vw;
+	text-align: center;
+	/*overflow: scroll;*/
 }
