@@ -1,13 +1,11 @@
 let minute = 0;
 let seconds = 0;
-let mseconds = 0;
 
 let time_start = false;
 
 let interval_id = null;
 
 var display = document.getElementById('display');
-var display_ms = document.getElementById('display_ms');
 var start = document.getElementById('start');
 var reset = document.getElementById('reset');
 
@@ -22,7 +20,7 @@ reset.onclick = function() {
 function startStop() {
     if(time_start === false) {
         time_start = true;
-        interval_id = setInterval(stopwatch, 10);
+        interval_id = setInterval(stopwatch, 1000);
         switchStart();
     } else {
         time_start = false;
@@ -34,11 +32,8 @@ function startStop() {
 
 function stopwatch() {
     if(time_start) {
-        mseconds++;
-        if(mseconds === 100) {
-            mseconds = 0;
-            seconds++;
-        }
+        seconds++;
+        
         if(seconds === 60) {
             minute++;
             seconds = 0;
@@ -69,7 +64,6 @@ function resetStopwatch() {
     }
     minute = 0;
     seconds = 0;
-    mseconds = 0;
     displayTime();
     changeBackground();
 }
@@ -77,21 +71,19 @@ function resetStopwatch() {
 function displayTime() {
     let m = minute.toString().padStart(2, '0');
     let s = seconds.toString().padStart(2, '0');
-    let ms = mseconds.toString().padStart(2, '0');
     display.innerHTML = `${m}:${s}`;
-    display_ms.innerHTML = `:${ms}`;
 }
 
 function changeBackground() {
-    if(minute === 0 && seconds === 0 && mseconds === 0) {
+    if(minute === 0 && seconds === 0) {
         document.body.style.backgroundColor = "white";
-    } else if(minute === 0 && seconds === 0 && mseconds > 0) {
+    } else if(minute === 0 && seconds > 0) {
         document.body.style.backgroundColor = "yellow";
-    } else if(minute === 1 && seconds === 0 && mseconds === 1) {
+    } else if(minute === 1 && seconds === 1) {
         document.body.style.backgroundColor = "green";
-    } else if(minute === 6 && seconds === 0 && mseconds === 1) {
+    } else if(minute === 4 && seconds === 1) {
         document.body.style.backgroundColor = "yellow";
-    } else if(minute == 7 && seconds == 16 && mseconds == 0) {
+    } else if(minute == 5 && seconds == 16) {
         document.body.style.backgroundColor = "red";
     }
 }
