@@ -33,6 +33,10 @@ resetButton.onclick = function() {
 	protectedTime1 = false
 	protectedTime2 = false
 	timeUp = false
+
+	if(!(startButton.innerHTML === "Start")) {
+		startButton.innerHTML = "Start"
+	}
 }
 
 muteToggleButton.onclick = function() {
