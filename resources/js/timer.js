@@ -101,13 +101,13 @@ function displayCurrentAlert(minute, second) {
 	if(key in printed && !printed[key]){
 		console.log("in here")
 		let alert = alerts[key]
-		let cAlert = `<div id="${key}" class="alert">${key} - ${alert}</div>` 
+		let minuteString = minute >= 10 ? minute.toString() : `0${minute}`
+		let secondString = second >= 10 ? second.toString() : `0${second}`
+		let cAlert = `<div id="${key}" class="alert">${minuteString}:${secondString} - ${alert}</div>` 
 		currentAlert.innerHTML = currentAlert.innerHTML.concat(cAlert)
 		printed[key] = true
 		let func = () => {
-			console.log(key)
 			document.getElementById(key).remove()
-			
 		}
 		setTimeout(func, 10000)
 	}
